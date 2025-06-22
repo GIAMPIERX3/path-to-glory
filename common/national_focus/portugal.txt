@@ -6855,13 +6855,6 @@ focus = {
 	focus = {
 		id = POR_more_buildings
 
-
-		select_effect = {
-		}
-
-		available = {
-			
-		}
 		prerequisite = { focus = POR_the_fifth_empire focus = POR_join_the_axis }
 		icon = GFX_SOV_aristocratic_investments_ccp_2d_sov_compatibility
 		x = 0
@@ -6876,7 +6869,7 @@ focus = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_timed_idea = {
 				idea = JAP_investment
-				days = 364
+				years = 1
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			every_controlled_state = {
@@ -6919,7 +6912,7 @@ focus = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_timed_idea = {
 				idea = JAP_investment
-				days = 90
+				months = 3
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			every_controlled_state = {
@@ -7309,11 +7302,6 @@ focus = {
 	focus = {
 		id = POR_restore_the_navy
 
-		#available = {
-		#	BRA = {
-		#		is_ai = no
-		#	}
-		#}
 		mutually_exclusive = {
 			focus = POR_monarchist_uprising_in_brazil
 		}
@@ -7342,9 +7330,7 @@ focus = {
 				basic_cruiser_armor_scheme = 1
 				basic_depth_charges = 1
 				basic_heavy_shell = 1
-				early_ship_hull_heavy = 1
 			    basic_ship_hull_heavy = 1
-				early_ship_hull_cruiser = 1
 				basic_ship_hull_cruiser = 1
 				marines = 1
 			}
