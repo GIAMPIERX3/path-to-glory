@@ -15,7 +15,7 @@ if = {
 set_war_support = 0.15
 set_stability = 0.6 
 set_convoys = 50
-set_research_slots = 3	#can get 4th relatively easily
+set_research_slots = 3 #can get 4th relatively easily
 	add_ideas = POR_unreliable_army
 	add_ideas = POR_unstable_republic
 set_technology = {
@@ -53,10 +53,10 @@ if = {
 			early_bomber = 1
 			CAS1 = 1
 			naval_bomber1 = 1	
+				
 		}
 	}
 }
-
 if = {
 	limit = {
 		has_dlc = "La Resistance"
@@ -66,7 +66,6 @@ if = {
 		armored_car1 = 1
 	}
 }
-
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -78,7 +77,6 @@ if = {
 		transport = 1
 	}
 }
-
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
@@ -99,7 +97,6 @@ if = {
 		mtg_transport = 1
 	}
 }
-
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
@@ -109,7 +106,6 @@ if = {
 		basic_light_tank = 1
 	}
 }
-
 if = {
 	limit = {
 		has_dlc = "No Step Back"
@@ -132,7 +128,7 @@ if = { # * = #availability had requirements of one tree while appearing for both
 		has_dlc = "La Resistance"
 	}
 	recruit_character = POR_julio_botelho_moniz						#added ft check, otherwise unchanged
-	recruit_character = POR_francisco_da_costa_gomes				#deleted as in previous idea file, non-DLC alternative is shared
+	#recruit_character = POR_francisco_da_costa_gomes				#deleted as in previous idea file, non-DLC alternative is shared
 	recruit_character = POR_alvaro_cunhal							#added ft check, otherwise unchanged
 	recruit_character = POR_francisco_da_cunha_leal					#added ft check, otherwise unchanged
 	recruit_character = POR_bento_de_jesus_caraca					#added ft check, otherwise unchanged
@@ -148,7 +144,7 @@ if = { # * = #availability had requirements of one tree while appearing for both
 	recruit_character = POR_jaime_cortesao							#split
 }
 
-#r56 tree
+# tree
 recruit_character = POR_raul_brandao								#ported ft check, otherwise unchanged
 recruit_character = POR_frederico_costa_lopes_silva
 
@@ -181,7 +177,7 @@ recruit_character = POR_vieira_da_rocha								#offensive army chief
 
 recruit_character = POR_jose_norton_de_matos						#leader role wasnt in r56 so moved here, unchanged theorist role with instances determining image 
 
-#r56 new commanders/admirals
+# new commanders/admirals
 recruit_character = POR_afonso_de_almeida_fernandes					#commander
 recruit_character = POR_jaime_silverio_marques						#commander
 recruit_character = POR_anibal_de_passos_e_sousa					#commander

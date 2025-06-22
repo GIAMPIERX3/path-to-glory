@@ -50,7 +50,7 @@ ideas = {
 			}
 		}
 
-		POR_under_the_sea_navy = {
+		POR_under_the_sea_navy_idea = {
 			picture = generic_navy_submarines
 			allowed = {
 				original_tag = POR
@@ -68,16 +68,16 @@ ideas = {
 			equipment_bonus = {
 				submarine = {
 					instant = yes
-					build_cost_ic = -0.10
+					build_cost_ic = -0.15
 				}
 				capital_ship = {
 					instant = yes
-					build_cost_ic = 0.10
+					build_cost_ic = 0.15
 				}
 			}
 		}
 
-		POR_over_the_sea_navy = {
+		POR_over_the_sea_navy_idea = {
 			picture = generic_navy_submarines
 			allowed = {
 				original_tag = POR
@@ -95,11 +95,11 @@ ideas = {
 			equipment_bonus = {
 				capital_ship = {
 					instant = yes
-					build_cost_ic = -0.10
+					build_cost_ic = -0.15
 				}
 				submarine = {
 					instant = yes
-					build_cost_ic = 0.10
+					build_cost_ic = 0.15
 				}
 			}
 		}
@@ -116,8 +116,10 @@ ideas = {
 			}
 
 			modifier = {
-				research_speed_factor = 0.07
-				scientist_research_bonus_factor = 0.10
+				research_speed_factor = 0.05
+				special_project_speed_factor = 0.05
+				scientist_breakthrough_bonus_factor = 0.10
+				scientist_research_bonus_factor = 0.05
 			}
 		}
 
@@ -158,6 +160,7 @@ ideas = {
 				modifier_army_sub_unit_marine_max_org_factor = 0.05
 			}
 		}
+
 		POR_civil_war_surrender_debuff = {
 			picture = generic_army_problems
 			allowed = {
@@ -188,7 +191,8 @@ ideas = {
 			modifier = {
 				research_speed_factor = 0.10
 				special_project_speed_factor = 0.10
-				scientist_breakthrough_bonus_factor = 0.10
+				scientist_breakthrough_bonus_factor = 0.20
+				scientist_research_bonus_factor = 0.10
 			}
 		}
 
@@ -207,6 +211,24 @@ ideas = {
 				political_power_cost = -0.10
 				consumer_goods_factor = -0.05
 				trade_opinion_factor = 0.25
+			}
+		}
+
+		POR_colonial_army_2 = {
+			picture = por_colonial_army
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				non_core_manpower = 0.10
+				conscription = 0.010
+				acclimatization_hot_climate_gain_factor = 0.10
 			}
 		}
 
@@ -315,7 +337,7 @@ ideas = {
 			
 			modifier = {
 				production_speed_buildings_factor = 0.05
-				consumer_goods_factor = -0.15
+				consumer_goods_factor = -0.10
 			}
 		}
 
@@ -367,11 +389,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				non_core_manpower = 0.20
+				non_core_manpower = 0.25
 				compliance_growth = 0.10
-				extra_trade_to_overlord_factor = 0.20
+				extra_trade_to_overlord_factor = 0.25
 				conscription = 0.010
-
+				trade_opinion_factor = 0.25
 			}
 		}
 

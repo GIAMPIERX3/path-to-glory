@@ -60,9 +60,6 @@
  POR_intensify_torpedo_manufacturing:0 "Better Torpedoes"
  POR_intensify_torpedo_manufacturing_desc:0 "Better torpedoes for better raiding!"
 
- POR_embrace_jungle_warfare:0 "Jungle training"
- POR_embrace_jungle_warfare_desc:0 "Jungles are a hostile environment, we must train even for the worse terrains, so we can be ready for anything!"
-
  POR_modernising_infantry_equipement:0 "Modernizing Infantry Equipment"
  POR_modernising_infantry_equipement_desc:0 "Modernizing outdated infantry equipment will put us on the same level as our enemies. We must not fall behind in this race!"
 
@@ -85,7 +82,7 @@
  POR_cork_exports_idea_desc:0 ""Cork Exporter" is a prestigious title. People would not be able to drink wine without us producing the cork for the bottles."
  
  POR_a_new_economy:0 "Believing in the New Economy"
- POR_a_new_economy:0 "With the rise of capitalism we must embrace it's culture to the fullest!"
+ POR_a_new_economy_desc:0 "With the rise of capitalism we must embrace it's culture to the fullest!"
 
  POR_modernising_support_equipement:0 "Modernizing Support Equipment"
  POR_modernising_support_equipement_desc:0 "Modernizing outdated support equipment will put us on the same level as our enemies. We must not fall behind in this race!"
@@ -97,4 +94,46 @@
  POR_advanced_companies_desc:0 "Portugal shall innovate with advanced support companies to ensure line battalions will not be overunned!"
  
  POR_kickstart_the_economy:0 "Kickstart the Economy"
- POR_kickstart_the_economy_desc:0 "We must start mobilising to not fall behind our enemies!"
+ POR_kickstart_the_economy_desc:0 "We must start mobilising to not fall behind our enemies!" 
+
+ POR_mainland_economy_revived:0 "Mainland Economy Revived"
+ POR_manland_economy_revived_desc:0 "The suffering of our citizens is ending, our help improved their conditions!"
+ 
+ POR_under_the_sea_navy:0 "Under the Sea Navy"
+ POR_under_the_sea_navy_desc:0 "The ocean has a new theather under the water. We must exploit it and use it to our advantage!"
+
+ POR_under_the_sea_navy_idea:0 "Under the Sea Navy"
+ POR_under_the_sea_navy_idea_desc:0 "The ocean has a new theather under the water. We must exploit it and use it to our advantage!"
+
+ POR_over_the_sea_navy:0 "Over the Sea Navy"
+ POR_over_the_sea_navy_desc:0 "The ocean has a new theather under the water. We must exploit it and use it to our advantage!"
+
+ POR_over_the_sea_navy_idea:0 "Over the Sea Navy"
+ POR_over_the_sea_navy_idea_desc:0 "The ocean theather will never be under the water. We must exploit rebuild our pride of the fleet on the surface!"
+
+ POR_special_submarines:0 "Special Submarine Projects"
+ POR_special_submarines_desc:0 "In the new naval theather we must research innovative technology and use it to our advantage!"
+
+ POR_special_battleships:0 "Special Battleship Projects"
+ POR_special_battleships_desc:0 "In the naval theather we must research innovative technology and use it to our advantage!"
+
+ POR_colonial_economic_aid_plan:0 "Colonial Economic Air Plan"
+ POR_colonial_economic_aid_plan_desc:0 "Our colonies are suffering, we must help them"
+
+ POR_colonial_economy_revived:0 "Colonial Economy Revived"
+ POR_colonial_economy_revived_desc:0 "The suffering of our colonies is ending, our help improved their conditions!"
+ 
+ POR_develop_north_mozambique:0 "Develop North Mozambique"
+ POR_develop_north_mozambique_desc:0 "We have discoveres some interesting aluminium deposits in the north of Mozambique, we must build an extraction facility to collect it!"
+
+ POR_develop_inner_mozambique:0 "Develop Inner Mozambique"
+ POR_develop_inner_mozambique_desc:0 "We have discoveres some natural rubber deposits in the inner land of Mozambique, we must build an extraction facility to collect it!"
+
+ POR_embrace_jungle_warfare:0 "Jungle training"
+ POR_embrace_jungle_warfare_desc:0 "Jungles are a hostile environment, we must train even for the worse terrains, so we can be ready for anything!"
+
+ POR_colonial_army_2:0 "Colonial Army"
+ POR_colonial_army_2_desc:0 "In order to have a strong nation, we cannot rely only on the Metropolitan Army. We must raise colonial units, arm them and train them  to fight in modern warfare."
+
+ POR_naval_armor_and_equipement_research:0 "Naval Armor and Equipement research"
+ POR_naval_armor_and_equipement_research_desc:0 "Our battleship tecnology is lacking, we must improve our naval armor and equipement."
