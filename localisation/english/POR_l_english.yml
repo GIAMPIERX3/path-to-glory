@@ -55,8 +55,8 @@
  POR_defence_of_freedom:0 "Defence of Freedom"
  POR_defence_of_freedom_desc:0 "We must stand for what is right! We must stand for the freedom of all of our citizens!"
 
- SOV_research_grants:0 "Soviet Research Grants"
- SOV_research_grants_desc:0 "With the help of the Soviet Union, our research institudes will be faster and more efficient!"
+ POR_soviet_research_grants:0 "Soviet Research Grants"
+ POR_soviet_research_grants_desc:0 "With the help of the Soviet Union, our research institudes will be faster and more efficient!"
  POR_intensify_torpedo_manufacturing:0 "Better Torpedoes"
  POR_intensify_torpedo_manufacturing_desc:0 "Better torpedoes for better raiding!"
 
@@ -66,8 +66,8 @@
  POR_modernising_infantry_equipement:0 "Modernizing Infantry Equipment"
  POR_modernising_infantry_equipement_desc:0 "Modernizing outdated infantry equipment will put us on the same level as our enemies. We must not fall behind in this race!"
 
- POR_portuguese_marines:0 "Portuguese Marines"
- POR_portuguese_marines_desc:0 "The Portuguese Marines will be a highly trained and specialized force, capable of conducting amphibious operations and rapid deployments. They will serve as a key component of our military strategy, ensuring that we can respond effectively to threats across the globe."
+ POR_portuguese_marines:0 "Fuzileiros"
+ POR_portuguese_marines_desc:0 "The Fuzileiros will be a highly trained and specialized force, capable of conducting amphibious operations and rapid deployments. They will serve as a key component of our military strategy, ensuring that we can respond effectively to threats across the globe."
  
  POR_defence_of_the_atlantic:0 "Defence of the Atlantic Plan"
  POR_defence_of_the_atlantic_desc:0 "The Atlantic is a vast theather to fight in, having enough quantity without compromising quality will make the ocean more favourable to us."
@@ -82,7 +82,7 @@
  POR_cork_exports_desc:0 "The south of Portugal is known for its cork production, in fact portugal is the N.1 cork producer of the globe."
 
  POR_cork_exports_idea:0 "Cork Exporter"
- POR_cork_exports_idea:0 ""Cork Exporter" is a prestigious title. People would not be able to drink wine without us producing the cork for the bottles."
+ POR_cork_exports_idea_desc:0 ""Cork Exporter" is a prestigious title. People would not be able to drink wine without us producing the cork for the bottles."
  
  POR_a_new_economy:0 "Believing in the New Economy"
  POR_a_new_economy:0 "With the rise of capitalism we must embrace it's culture to the fullest!"

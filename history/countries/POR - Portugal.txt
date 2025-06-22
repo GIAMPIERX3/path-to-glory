@@ -15,7 +15,7 @@ if = {
 set_war_support = 0.15
 set_stability = 0.6 
 set_convoys = 50
-set_research_slots = 4	#can get 4th relatively easily
+set_research_slots = 3	#can get 4th relatively easily
 	add_ideas = POR_unreliable_army
 	add_ideas = POR_unstable_republic
 set_technology = {
@@ -53,10 +53,10 @@ if = {
 			early_bomber = 1
 			CAS1 = 1
 			naval_bomber1 = 1	
-				
 		}
 	}
 }
+
 if = {
 	limit = {
 		has_dlc = "La Resistance"
@@ -66,6 +66,7 @@ if = {
 		armored_car1 = 1
 	}
 }
+
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -77,6 +78,7 @@ if = {
 		transport = 1
 	}
 }
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
@@ -97,6 +99,7 @@ if = {
 		mtg_transport = 1
 	}
 }
+
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
@@ -106,6 +109,7 @@ if = {
 		basic_light_tank = 1
 	}
 }
+
 if = {
 	limit = {
 		has_dlc = "No Step Back"
@@ -128,7 +132,7 @@ if = { # * = #availability had requirements of one tree while appearing for both
 		has_dlc = "La Resistance"
 	}
 	recruit_character = POR_julio_botelho_moniz						#added ft check, otherwise unchanged
-	#recruit_character = POR_francisco_da_costa_gomes				#deleted as in previous idea file, non-DLC alternative is shared
+	recruit_character = POR_francisco_da_costa_gomes				#deleted as in previous idea file, non-DLC alternative is shared
 	recruit_character = POR_alvaro_cunhal							#added ft check, otherwise unchanged
 	recruit_character = POR_francisco_da_cunha_leal					#added ft check, otherwise unchanged
 	recruit_character = POR_bento_de_jesus_caraca					#added ft check, otherwise unchanged
