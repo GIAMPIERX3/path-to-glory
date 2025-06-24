@@ -142,8 +142,28 @@ ideas = {
 				airforce_intel_factor = 0.05
 			}
 		}
+
 		POR_portuguese_marines = {
-			picture = por_the_fifth_empire 
+			picture = BRA_arsenal_de_marinha
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				extra_marine_supply_grace = 24
+				unit_marine_design_cost_factor = -1
+				modifier_army_sub_unit_marine_attack_factor = 0.05
+				modifier_army_sub_unit_marine_defence_factor = 0.05
+			}
+		}
+
+		POR_portuguese_marines2 = {
+			picture = BRA_arsenal_de_marinha
 			allowed = {
 				original_tag = POR
 			}
@@ -155,9 +175,159 @@ ideas = {
 			
 			modifier = {
 				extra_marine_supply_grace = 48
+				unit_marine_design_cost_factor = -1
 				modifier_army_sub_unit_marine_attack_factor = 0.05
 				modifier_army_sub_unit_marine_defence_factor = 0.05
 				modifier_army_sub_unit_marine_max_org_factor = 0.05
+				modifier_army_sub_unit_marine_speed_factor = 0.05
+			}
+		}
+
+		POR_portuguese_marines3 = {
+			picture = BRA_arsenal_de_marinha
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				extra_marine_supply_grace = 72
+				unit_marine_design_cost_factor = -1
+				modifier_army_sub_unit_marine_attack_factor = 0.05
+				modifier_army_sub_unit_marine_defence_factor = 0.05
+				modifier_army_sub_unit_marine_max_org_factor = 0.05
+				modifier_army_sub_unit_marine_speed_factor = 0.10
+				amphibious_invasion = 0.10
+				amphibious_invasion_defence = 0.10
+			}
+		}
+
+		POR_iberian_mountaineers = {
+			picture = PER_special_units_division_idea
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unit_mountaineers_design_cost_factor = -1
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+			}
+		}
+
+		POR_iberian_mountaineers2 = {
+			picture = PER_special_units_division_idea
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unit_mountaineers_design_cost_factor = -1
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+				modifier_army_sub_unit_mountaineers_max_org_factor = 0.05
+				modifier_army_sub_unit_mountaineers_speed_factor = 0.05
+			}
+		}
+
+		POR_iberian_mountaineers3 = {
+			picture = PER_special_units_division_idea
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unit_mountaineers_design_cost_factor = -1
+				modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+				modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+				modifier_army_sub_unit_mountaineers_max_org_factor = 0.05
+				modifier_army_sub_unit_mountaineers_speed_factor = 0.10
+				mountaineers_special_forces_contribution_factor = -0.10
+				acclimatization_cold_climate_gain_factor = 0.10
+			}
+		}
+
+		POR_tropas_paraquedistas_idea = {
+			picture = eng_special_air_service
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				extra_paratrooper_supply_grace = 24
+				unit_paratrooper_design_cost_factor = -1
+				modifier_army_sub_unit_paratrooper_attack_factor = 0.05
+				modifier_army_sub_unit_paratrooper_defence_factor = 0.05
+			}
+		}
+
+		POR_tropas_paraquedistas_idea2 = {
+			picture = eng_special_air_service
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				extra_paratrooper_supply_grace = 48
+				unit_paratrooper_design_cost_factor = -1
+				modifier_army_sub_unit_paratrooper_attack_factor = 0.05
+				modifier_army_sub_unit_paratrooper_defence_factor = 0.05
+				modifier_army_sub_unit_paratrooper_max_org_factor = 0.05
+				modifier_army_sub_unit_paratrooper_speed_factor = 0.05
+				acclimatization_hot_climate_gain_factor = 0.10
+			}
+		}
+
+		POR_tropas_paraquedistas_idea3 = {
+			picture = eng_special_air_service
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				extra_paratrooper_supply_grace = 72
+				unit_paratrooper_design_cost_factor = -1
+				modifier_army_sub_unit_paratrooper_attack_factor = 0.05
+				modifier_army_sub_unit_paratrooper_defence_factor = 0.05
+				modifier_army_sub_unit_paratrooper_max_org_factor = 0.05
+				modifier_army_sub_unit_paratrooper_speed_factor = 0.10
+				paradrop_organization_factor = 0.10
+				paratroopers_special_forces_contribution_factor = -0.10
+				acclimatization_hot_climate_gain_factor = 0.10
 			}
 		}
 

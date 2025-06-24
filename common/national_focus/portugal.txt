@@ -131,7 +131,7 @@ focus_tree = {
 		prerequisite = { focus = POR_army_reorganization }
 
 		icon = GFX_focus_generic_little_entente
-		x = -3
+		x = 5
 		y = 1
 
 		relative_position_id = POR_army_reorganization
@@ -948,6 +948,8 @@ focus_tree = {
 		cost = 5
 		search_filters = {FOCUS_FILTER_MANPOWER}
 		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.10
 			swap_ideas = {
 			remove_idea = POR_colonial_assimilation_policy_2
 			add_idea = POR_colonial_assimilation_policy_3
@@ -2197,9 +2199,11 @@ focus = {
 		x = 1
 		y = 1
 		relative_position_id = POR_a_new_economy
-		cost = 5
+		cost = 10
 		search_filters = {FOCUS_FILTER_MANPOWER}
 		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.10
 			add_ideas = POR_mainland_economy_revived_idea
 		}
 	}
@@ -2448,7 +2452,7 @@ focus = {
 		x = -1
 		y = 1
 		relative_position_id = POR_naval_research_institute
-		cost = 5
+		cost = 10
 		available = {
 		}
 
@@ -2495,7 +2499,7 @@ focus = {
 		x = 1
 		y = 1
 		relative_position_id = POR_naval_research_institute
-		cost = 5
+		cost = 10
 		available = {
 		}
 		completion_reward = {
@@ -2506,20 +2510,22 @@ focus = {
 	focus = {
 		id = POR_institute_mountaineer_corps
 		prerequisite = { focus = POR_army_reorganization }
-		mutually_exclusive = { focus = POR_institute_marine_corps }
-		icon = GFX_goal_generic_amphibious_assault
-		x = -5
+		mutually_exclusive = { 
+		focus = POR_institute_marine_corps 
+		focus = POR_institute_paratrooper_corps }
+		icon = GFX_focus_GRE_a_land_of_mountains
+		x = 5
 		y = 1
 
-		relative_position_id = POR_army_reorganization
+		relative_position_id = POR_second_navy_reequipment
 		cost = 5
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			set_technology = {
-				marines = 1
+				tech_mountaineers = 1
 			}
 			add_tech_bonus = {
-				name = POR_institute_mountaneer_corps
+				name = POR_institute_mountaineer_corps
 			    bonus = 1
 			    uses = 1
 			    category = mountaineers_tech
@@ -2528,61 +2534,76 @@ focus = {
 	}
 
 	focus = {
-		id = POR_iberian_commandos
+		id = POR_iberian_elites
 		prerequisite = { focus = POR_institute_mountaineer_corps }
-		icon = GFX_focus_generic_naval_discipline
+		icon = GFX_focus_generic_free_iberia
 		x = 0
 		y = 1
 		relative_position_id = POR_institute_mountaineer_corps
 		cost = 5
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_ideas = POR_iberian_commandos
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 1
+					category = special_forces_doctrine
+				}
+			}
+		add_ideas = POR_iberian_mountaineers
 		}
 	}
 
 	focus = {
-		id = POR_institute_marine_corps
-		prerequisite = { focus = POR_second_navy_reequipment }
-		prerequisite = { focus = POR_army_reorganization }
-		mutually_exclusive = { focus = POR_institute_mountaineer_corps }
-		icon = GFX_goal_generic_amphibious_assault
-		x = 3
-		y = 1
-
-		relative_position_id = POR_second_navy_reequipment
-		cost = 5
+		id = POR_iberian_elites_special_training
+		prerequisite = { focus = POR_iberian_elites }
+		prerequisite = { focus = POR_expand_special_forces
+	    focus = POR_regimento_de_comandos }
+		icon = GFX_focus_SMB_tierra_del_fuego_training
+		x = 0
+		y = 2
+		relative_position_id = POR_iberian_elites
+		cost = 7.5
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			set_technology = {
-				marines = 1
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 2
+					category = special_forces_doctrine
+				}
 			}
-			add_tech_bonus = {
-				name = POR_fuzileiros
-			    bonus = 1
-			    uses = 1
-			    category = marine_tech
-			}
-			add_tech_bonus = {
-				name = POR_fuzileiros
-			    bonus = 1.0
-			    uses = 2
-			    category = tp_tech
+		    swap_ideas = {
+				remove_idea = POR_iberian_mountaineers
+				add_idea = POR_iberian_mountaineers2
 			}
 		}
 	}
 
 	focus = {
-		id = POR_fuzileiros
-		prerequisite = { focus = POR_institute_marine_corps }
-		icon = GFX_focus_generic_naval_discipline
+		id = POR_iberian_high_altitude_training
+		prerequisite = { focus = POR_iberian_elites_special_training }
+		icon = GFX_focus_AFG_mountain_training
 		x = 0
 		y = 1
-		relative_position_id = POR_institute_marine_corps
-		cost = 5
+		relative_position_id = POR_iberian_elites_special_training
+		cost = 10
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_ideas = POR_portuguese_marines
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 3
+					category = special_forces_doctrine
+				}
+			}
+		    swap_ideas = {
+				remove_idea = POR_iberian_mountaineers2
+				add_idea = POR_iberian_mountaineers3
+			}
 		}
 	}
 
@@ -3083,6 +3104,113 @@ focus = {
 	}
 
 	focus = {
+		id = POR_institute_marine_corps
+		prerequisite = { focus = POR_second_navy_reequipment }
+		prerequisite = { focus = POR_army_reorganization }
+		mutually_exclusive = { 
+		focus = POR_institute_mountaineer_corps 
+		focus = POR_institute_paratrooper_corps }
+		icon = GFX_goal_generic_amphibious_assault
+		x = 3
+		y = 1
+
+		relative_position_id = POR_second_navy_reequipment
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			set_technology = {
+				marines = 1
+			}
+			add_tech_bonus = {
+				name = POR_fuzileiros
+			    bonus = 1
+			    uses = 1
+			    category = marine_tech
+			}
+			add_tech_bonus = {
+				name = POR_fuzileiros
+			    bonus = 1.0
+			    uses = 2
+			    category = tp_tech
+			}
+		}
+	}
+
+	focus = {
+		id = POR_fuzileiros
+		prerequisite = { focus = POR_institute_marine_corps }
+		icon = GFX_focus_generic_naval_discipline
+		x = 0
+		y = 1
+		relative_position_id = POR_institute_marine_corps
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 1
+					category = special_forces_doctrine
+				}
+			}
+			add_ideas = POR_portuguese_marines
+		}
+	}
+
+	focus = {
+		id = POR_fuzileiros_special_training
+		prerequisite = { focus = POR_fuzileiros }
+		prerequisite = { focus = POR_expand_special_forces }
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 0
+		y = 2
+		relative_position_id = POR_fuzileiros
+		cost = 7.5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 2
+					category = special_forces_doctrine
+				}
+			}
+			swap_ideas = {
+				remove_idea = POR_portuguese_marines
+				add_idea = POR_portuguese_marines2
+			}
+		}
+	}
+
+	focus = {
+		id = POR_fuzileiros_amphibious_training
+		prerequisite = { focus = POR_fuzileiros_special_training }
+		
+		icon = GFX_focus_generic_naval_invasion
+		x = 0
+		y = 1
+		relative_position_id = POR_fuzileiros_special_training
+		cost = 10
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 3
+					category = special_forces_doctrine
+				}
+			}
+			swap_ideas = {
+				remove_idea = POR_portuguese_marines2
+				add_idea = POR_portuguese_marines3
+			}
+		}
+	}
+
+	focus = {
 		id = POR_army_reorganization
 		icon = GFX_focus_generic_combined_arms
 		x = 10	
@@ -3105,7 +3233,7 @@ focus = {
 		}
 		prerequisite = { focus = POR_army_reorganization }
 		icon = GFX_focus_eng_move_to_secure_the_dominions
-		x = 0		
+		x = 3		
 		y = 1
 
 		relative_position_id = POR_army_reorganization
@@ -3274,30 +3402,75 @@ focus = {
 	}
 
 	focus = {
-		id = POR_tropas_paraquedistas
-		available = {	
-		}
-
-		bypass = {		
-		}
-		prerequisite = { focus = POR_defend_the_borders focus = POR_rebuild_the_lines_of_torres_vedras }	
-
+		id = POR_institute_paratrooper_corps
+		prerequisite = { focus = POR_army_reorganization }
+		mutually_exclusive = { 
+		focus = POR_institute_marine_corps 
+		focus = POR_institute_mountaineer_corps }
 		icon = GFX_focus_generic_paratrooper
-		x = 1
+		x = 7
 		y = 1
 
-		relative_position_id = POR_defend_the_borders
+		relative_position_id = POR_second_navy_reequipment
 		cost = 5
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = { 
+			set_technology = {
+				paratroopers = 1
+				early_transport_plane = 1
+			}
 			add_tech_bonus = {
 				name = POR_tropas_paraquedistas
-				bonus = 1.0
-				uses = 2
+				bonus = 1
+				uses = 1
 				category = para_tech
 			}
+			add_tech_bonus = {
+				name = POR_tropas_paraquedistas
+				bonus = 1
+				uses = 2
+				category = transport_planes_cat
+			}
+		}
+	}
+
+	focus = {
+		id = POR_tropas_paraquedistas
+		prerequisite = { focus = POR_institute_paratrooper_corps }
+		icon = GFX_focus_eng_special_air_service
+		x = 0
+		y = 1
+		relative_position_id = POR_institute_paratrooper_corps
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = { 
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 1
+					category = special_forces_doctrine
+				}
+			}
+			add_ideas = POR_tropas_paraquedistas_idea
+		}
+	}
+
+	focus = {
+		id = POR_tropas_paraquedistas_desert_training
+		prerequisite = { focus = POR_tropas_paraquedistas }
+		prerequisite = { focus = POR_regimento_de_comandos }
+		icon = GFX_focus_PER_desert_training
+		x = 0
+		y = 2
+		relative_position_id = POR_tropas_paraquedistas
+		cost = 7.5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = { 
 			if = {
 				limit = { has_dlc = "Arms Against Tyranny" }
 				add_doctrine_cost_reduction = {
@@ -3306,38 +3479,88 @@ focus = {
 					category = special_forces_doctrine
 				}
 			}
+			swap_ideas = {
+				remove_idea = POR_tropas_paraquedistas_idea
+				add_idea = POR_tropas_paraquedistas_idea2
+			}
 		}
 	}
 
 	focus = {
-		id = POR_regimento_de_comandos
-		available = {	
-		}
-
-		bypass = {		
-		}
-		prerequisite = { focus = POR_tropas_paraquedistas }	
-		icon = GFX_goal_generic_special_forces
+		id = POR_tropas_paraquedistas_paradropping_innovations
+		prerequisite = { focus = POR_tropas_paraquedistas_desert_training }
+		icon = GFX_SOV_transpolar_flights_ccp_2d_sov_compatibility
 		x = 0
 		y = 1
+		relative_position_id = POR_tropas_paraquedistas_desert_training
+		cost = 10
+		search_filters = {FOCUS_FILTER_RESEARCH}
 
-		relative_position_id = POR_tropas_paraquedistas
+		completion_reward = { 
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				add_doctrine_cost_reduction = {
+					cost_reduction = 1
+					uses = 3
+					category = special_forces_doctrine
+				}
+			}
+			swap_ideas = {
+				remove_idea = POR_tropas_paraquedistas_idea2
+				add_idea = POR_tropas_paraquedistas_idea3
+			}
+		}
+	}
+
+	focus = {
+		id = POR_expand_special_forces
+	
+		prerequisite = { focus = POR_iberian_elites 
+		focus = POR_fuzileiros 
+	    focus = POR_tropas_paraquedistas }	
+		icon = GFX_goal_generic_special_forces
+		x = -1
+		y = 1
+
+		relative_position_id = POR_iberian_elites
 		cost = 5
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
 			add_ideas = special_forces
+		}
+	}
+
+	focus = {
+		id = POR_regimento_de_comandos
+	
+		prerequisite = { focus = POR_iberian_elites 
+		focus = POR_fuzileiros 
+	    focus = POR_tropas_paraquedistas }	
+		icon = GFX_goal_generic_special_forces
+		x = 1
+		y = 1
+
+		relative_position_id = POR_iberian_elites
+		cost = 5
+
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
 			add_tech_bonus = {
 				name = POR_regimento_de_comandos
 				bonus = 1.0
-				uses = 2
+				uses = 3
 				technology = paratroopers
 				technology = paratroopers2
+				technology = paratroopers3
 				technology = marines
 				technology = marines2
+				technology = marines3
 				technology = tech_mountaineers
 				technology = tech_mountaineers2
+				technology = tech_mountaineers3
 			}
 		}
 	}
@@ -3351,7 +3574,7 @@ focus = {
 		}
 		prerequisite = { focus = POR_army_reorganization }
 		icon = GFX_goal_generic_army_doctrines
-		x = 3		
+		x = 0		
 		y = 1
 
 		relative_position_id = POR_army_reorganization
@@ -3452,7 +3675,7 @@ focus = {
 		prerequisite = {
 		}
 		icon = GFX_focus_PER_strengthen_the_tudeh
-		x = 14
+		x = 16
 		y = 0
 		allow_branch = {
 			NOT = {
