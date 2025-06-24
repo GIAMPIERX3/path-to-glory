@@ -328,11 +328,19 @@ focus_tree = {
 		id = POR_develop_guinea
 		available = {
 			OR = {
+			OR = {
 				has_full_control_of_state = 296
 				296 = {
 					owner = { is_subject_of = ROOT }
 				}
-			}
+			}	
+			OR = {
+				has_full_control_of_state = 702
+				702 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}	
+			}	
 		}
 		prerequisite = { focus = POR_colonial_economic_aid_plan }
 				
@@ -344,7 +352,49 @@ focus_tree = {
 		cost = 5
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = { 
-			296 = {
+	# For state 702
+    if = {
+        limit = {
+            OR = {
+				has_full_control_of_state = 702
+				702 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}	
+        }
+        702 = {
+            add_extra_state_shared_building_slots = 1
+
+            add_building_construction = {
+                type = naval_base
+                level = 2
+                province = 13014
+                instant_build = yes
+            }
+
+            add_building_construction = {
+                type = infrastructure
+                level = 2
+                instant_build = yes
+            }
+			add_core_of = ROOT
+        }
+    }
+    else = {
+        add_manpower = 10000
+    }
+
+    # For state 296
+    if = {
+        limit = {	
+			OR = {
+				has_full_control_of_state = 296
+				296 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}	
+        }
+        296 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = infrastructure
@@ -367,7 +417,11 @@ focus_tree = {
 					amount = 6
 				}
 			}
-		}
+            }
+             else = {
+            add_manpower = 10000
+            }
+        }
 	}
 
 	focus = {
@@ -462,6 +516,20 @@ focus_tree = {
                 instant_build = yes
             }
 
+			add_building_construction = {
+                type = coastal_bunker
+                level = 2
+                province = 4189
+                instant_build = yes
+            }
+
+			add_building_construction = {
+                type = bunker
+                level = 2
+                province = 4189
+                instant_build = yes
+            }
+
             add_building_construction = {
                 type = infrastructure
                 level = 2
@@ -502,6 +570,20 @@ focus_tree = {
             add_building_construction = {
                 type = infrastructure
                 level = 2
+                instant_build = yes
+            }
+
+			add_building_construction = {
+                type = coastal_bunker
+                level = 2
+                province = 1273
+                instant_build = yes
+            }
+
+			add_building_construction = {
+                type = bunker
+                level = 2
+                province = 1273
                 instant_build = yes
             }
 
@@ -2118,6 +2200,7 @@ focus = {
 		cost = 5
 		search_filters = {FOCUS_FILTER_MANPOWER}
 		completion_reward = {
+			add_ideas = POR_mainland_economy_revived_idea
 		}
 	}
 
@@ -2250,7 +2333,7 @@ focus = {
 	focus = {
 		id = POR_merchant_marine_protection
 		prerequisite = { focus = POR_a_powerful_merchant_marine }
-		icon = GFX_goal_generic_amphibious_assault
+		icon = GFX_focus_generic_merchant_fleet
 		x = 0
 		y = 1
 
@@ -2372,6 +2455,12 @@ focus = {
 		completion_reward = {
 			complete_special_project = sp:sp_naval_cruiser_submarine
 			complete_special_project = sp:sp_naval_midget_submarine
+			# AI will build the required docks for the next focus
+			add_ai_strategy = {
+				type = building_target
+				id = dockyard
+				value = 15
+			}
 		}
 	}
 
@@ -2389,6 +2478,12 @@ focus = {
 
 		completion_reward = {
 			add_ideas = POR_over_the_sea_navy_idea
+			# AI will build the required docks for the next focus
+			add_ai_strategy = {
+				type = building_target
+				id = dockyard
+				value = 15
+			}
 		}
 	}
 
@@ -2409,25 +2504,63 @@ focus = {
 	}
 
 	focus = {
-		id = POR_fuzileiros
+		id = POR_institute_mountaineer_corps
+		prerequisite = { focus = POR_army_reorganization }
+		mutually_exclusive = { focus = POR_institute_marine_corps }
+		icon = GFX_goal_generic_amphibious_assault
+		x = -5
+		y = 1
+
+		relative_position_id = POR_army_reorganization
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			set_technology = {
+				marines = 1
+			}
+			add_tech_bonus = {
+				name = POR_institute_mountaneer_corps
+			    bonus = 1
+			    uses = 1
+			    category = mountaineers_tech
+			}
+		}
+	}
+
+	focus = {
+		id = POR_iberian_commandos
+		prerequisite = { focus = POR_institute_mountaineer_corps }
+		icon = GFX_focus_generic_naval_discipline
+		x = 0
+		y = 1
+		relative_position_id = POR_institute_mountaineer_corps
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_ideas = POR_iberian_commandos
+		}
+	}
+
+	focus = {
+		id = POR_institute_marine_corps
 		prerequisite = { focus = POR_second_navy_reequipment }
 		prerequisite = { focus = POR_army_reorganization }
-		icon = GFX_focus_generic_naval_discipline
+		mutually_exclusive = { focus = POR_institute_mountaineer_corps }
+		icon = GFX_goal_generic_amphibious_assault
 		x = 3
 		y = 1
 
 		relative_position_id = POR_second_navy_reequipment
-		cost = 7.5
+		cost = 5
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_ideas = POR_portuguese_marines
 			set_technology = {
 				marines = 1
 			}
 			add_tech_bonus = {
 				name = POR_fuzileiros
 			    bonus = 1
-			    uses = 2
+			    uses = 1
 			    category = marine_tech
 			}
 			add_tech_bonus = {
@@ -2436,12 +2569,20 @@ focus = {
 			    uses = 2
 			    category = tp_tech
 			}
-			# AI will build the required docks for the next focus
-			add_ai_strategy = {
-				type = building_target
-				id = dockyard
-				value = 15
-			}
+		}
+	}
+
+	focus = {
+		id = POR_fuzileiros
+		prerequisite = { focus = POR_institute_marine_corps }
+		icon = GFX_focus_generic_naval_discipline
+		x = 0
+		y = 1
+		relative_position_id = POR_institute_marine_corps
+		cost = 5
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_ideas = POR_portuguese_marines
 		}
 	}
 
@@ -2629,6 +2770,7 @@ focus = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			set_technology = {
+				basic_ship_hull_heavy = 1
 			}
 			add_tech_bonus = {
 				name = POR_battleship_effort
@@ -2943,7 +3085,7 @@ focus = {
 	focus = {
 		id = POR_army_reorganization
 		icon = GFX_focus_generic_combined_arms
-		x = 9	
+		x = 10	
 		y = 0
 		relative_position_id = POR_second_navy_reequipment
 		cost = 10
@@ -3310,7 +3452,7 @@ focus = {
 		prerequisite = {
 		}
 		icon = GFX_focus_PER_strengthen_the_tudeh
-		x = 15
+		x = 14
 		y = 0
 		allow_branch = {
 			NOT = {
@@ -6572,6 +6714,10 @@ focus = {
 				add_core_of = ROOT
 			}
 			118 = {
+				set_state_flag = POR_fifth_empire_flag
+				add_core_of = ROOT
+			}
+			702 = {
 				set_state_flag = POR_fifth_empire_flag
 				add_core_of = ROOT
 			}

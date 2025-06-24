@@ -209,7 +209,7 @@ ideas = {
 			
 			modifier = {
 				political_power_cost = -0.10
-				consumer_goods_factor = -0.05
+				consumer_goods_factor = -0.10
 				trade_opinion_factor = 0.25
 			}
 		}
@@ -229,6 +229,26 @@ ideas = {
 				non_core_manpower = 0.10
 				conscription = 0.010
 				acclimatization_hot_climate_gain_factor = 0.10
+			}
+		}
+
+		POR_mainland_economy_revived_idea = {
+			picture = HABSBURG_economy
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				tag = POR
+			}
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.10
+				consumer_goods_factor = -0.10
+				local_building_slots_factor = 0.10
+				production_speed_buildings_factor = 0.10
+				local_resources_factor = 0.10
 			}
 		}
 
@@ -812,7 +832,8 @@ ideas = {
 			modifier = {
 				production_speed_buildings_factor = 0.10
 				local_building_slots_factor = 0.10
-
+				industry_repair_factor = 0.25
+				industry_free_repair_factor = 0.25
 			}
 		}
 
@@ -828,11 +849,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_buildings_factor = 0.10
 				production_lack_of_resource_penalty_factor = -0.10
 				production_factory_start_efficiency_factor = 0.10
 				production_factory_efficiency_gain_factor = 0.05
 				line_change_production_efficiency_factor = 0.10
+				license_production_speed = 0.25
 			}
 		}
 

@@ -63,6 +63,9 @@
  POR_modernising_infantry_equipement:0 "Modernizing Infantry Equipment"
  POR_modernising_infantry_equipement_desc:0 "Modernizing outdated infantry equipment will put us on the same level as our enemies. We must not fall behind in this race!"
 
+ POR_institute_marine_corps:0 "Institute Marine Corps"
+ POR_institute_marine_corps_desc:0 "Creating Marine Corps capable of conducting amphibious operations and rapid deployments will serve as a key component of our military strategy, ensuring that we can respond effectively to threats across the globe."
+
  POR_portuguese_marines:0 "Fuzileiros"
  POR_portuguese_marines_desc:0 "The Fuzileiros will be a highly trained and specialized force, capable of conducting amphibious operations and rapid deployments. They will serve as a key component of our military strategy, ensuring that we can respond effectively to threats across the globe."
  
@@ -98,6 +101,9 @@
 
  POR_mainland_economy_revived:0 "Mainland Economy Revived"
  POR_manland_economy_revived_desc:0 "The suffering of our citizens is ending, our help improved their conditions!"
+
+ POR_mainland_economy_revived_idea:0 "Mainland Economy Revived"
+ POR_manland_economy_revived_idea_desc:0 "The suffering of our citizens is ending, our help improved their conditions!"
  
  POR_under_the_sea_navy:0 "Under the Sea Navy"
  POR_under_the_sea_navy_desc:0 "The ocean has a new theather under the water. We must exploit it and use it to our advantage!"
@@ -127,7 +133,16 @@
  POR_develop_north_mozambique_desc:0 "We have discoveres some interesting aluminium deposits in the north of Mozambique, we must build an extraction facility to collect it!"
 
  POR_develop_inner_mozambique:0 "Develop Inner Mozambique"
- POR_develop_inner_mozambique_desc:0 "We have discoveres some natural rubber deposits in the inner land of Mozambique, we must build an extraction facility to collect it!"
+ POR_develop_inner_mozambique_desc:0 "We have discovered some natural rubber deposits in the inner land of Mozambique, we must build an extraction facility to collect it!"
+
+ POR_develop_guinea:0 "Develop Guinea and Cape Verde"
+ POR_develop_guinea_desc:0 "Guinea is a strategic port in the west of africa, we must protect it and develope it. Meanwhile Cape Verde shall be integrated into portugal as many portugues live there."
+
+ POR_develop_timor:0 "Develop Timor"
+ POR_develop_timor_desc:0 "We have discovered some natural rubber deposits in Timor, we must build an extraction facility to collect it!"
+
+ POR_develop_trade_ports:0 "Develop Trade Ports"
+ POR_develop_trade_ports_desc:0 "Trade ports are vital for a successful empire, we must protect and develope them at all cost!"
 
  POR_embrace_jungle_warfare:0 "Jungle training"
  POR_embrace_jungle_warfare_desc:0 "Jungles are a hostile environment, we must train even for the worse terrains, so we can be ready for anything!"
