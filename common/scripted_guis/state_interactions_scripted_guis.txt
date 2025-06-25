@@ -1,0 +1,420 @@
+scripted_gui = {
+
+	si_toggle_container = {
+		context_type = player_context
+		window_name = "si_toggle_container"
+		
+		
+
+		effects = {
+			si_toggle_button_click = {
+				if = {
+					limit = { ROOT = { has_country_flag = si_open_cflag } }
+					clr_country_flag = si_open_cflag
+				}
+				else = {
+					set_country_flag = si_open_cflag
+				}
+			}
+		}
+	}
+
+	si_main_container = {
+		context_type = selected_state_context
+		window_name = "si_main_container"
+		
+		visible = {
+			ROOT = { has_country_flag = si_open_cflag }
+		}
+
+
+
+### Move Capital
+			si_move_capital_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				is_owned_and_controlled_by = ROOT
+				is_core_of = FROM
+				is_capital = no
+				ROOT = { check_variable = { var = ROOT.political_power   value = 100   compare = greater_than_or_equals } }
+			}
+
+
+### Request / Remove Resource Rights
+			si_request_resource_rights_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				NOT = { is_owned_and_controlled_by = ROOT }
+				NOT = { has_state_flag = si_resource_rights_sflag }
+				ROOT = { has_relation_modifier = { target = PREV   modifier = si_resource_rights_given_opmod } }
+			}
+			si_remove_resource_rights_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				is_owned_and_controlled_by = ROOT
+				has_state_flag = si_resource_rights_sflag
+				ROOT = { check_variable = { var = ROOT.political_power   value = 5   compare = greater_than_or_equals } }
+			}
+
+
+
+### Border War (Custom)
+			si_border_war_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				# check if defender is neutral, not guaranteed, their state neighbours root's and is not their capital, defender/attacker haven't been in a border war recently, and has the PP/CP available
+				OWNER = {
+					NOT = { is_ally_with = ROOT }
+					NOT = { has_war_with = ROOT }
+				}
+				any_neighbor_state = { is_owned_and_controlled_by = ROOT }
+				#is_capital = no
+				OWNER = { NOT = { has_idea = si_border_war_defender_idea } }
+				ROOT = { NOT = { has_idea = si_border_war_attacker_idea } }
+				ROOT = { check_variable = { var = ROOT.political_power   value = 10   compare = greater_than_or_equals } }
+				ROOT = { check_variable = { var = ROOT.command_power   value = 10   compare = greater_than_or_equals } }
+			}
+
+
+### Mark / Unmark
+			si_mark_state_button_click_enabled = {
+				# check if owner is a subject and game rule is enabled, or if owner isn't a subject
+				OR = {
+					AND = {
+						has_global_flag = rt56rp_gr_stt_subjects_gflag
+						OWNER = {
+							any_country = {
+								is_subject_of = ROOT
+								tag = PREV
+							}
+						}
+					}
+					NOT = { OWNER = { is_subject_of = ROOT } }
+				}
+				# check if no lock, or if the owner is the locked target and the state isn't already marked
+				OR = {
+					check_variable = { ROOT.si_target_var = 0 }
+					AND = {
+						NOT = { check_variable = { ROOT.si_target_var = 0 } }
+						OWNER = { tag = ROOT.si_target_var }
+						NOT = { is_in_array = { array = ROOT.si_states_marked   value = THIS } }
+					}
+				}
+			}
+			si_mark_all_states_button_click_enabled = {
+				# check if owner is a subject and game rule is enabled, or if owner isn't a subject
+				OR = {
+					AND = {
+						has_global_flag = rt56rp_gr_stt_subjects_gflag
+						OWNER = {
+							any_country = {
+								is_subject_of = ROOT
+								tag = PREV
+							}
+						}
+					}
+					NOT = { OWNER = { is_subject_of = ROOT } }
+				}
+				# check if no lock, or if the owner is the locked target and all of their states are not already marked
+				OR = {
+					check_variable = { ROOT.si_target_var = 0 }
+					AND = {
+						NOT = { check_variable = { ROOT.si_target_var = 0 } }
+						OWNER = { tag = ROOT.si_target_var }
+						NOT = {
+							count_triggers = {
+								amount = 1
+								ROOT = {
+									all_owned_state = { is_in_array = { array = ROOT.si_states_marked   value = THIS } }
+								}
+							}
+						}
+					}
+				}
+			}
+			si_unmark_state_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				# check if state is in the array
+				is_in_array = { array = ROOT.si_states_marked   value = THIS }
+			}
+			si_unmark_all_states_button_click_enabled = {
+				NOT = { has_global_flag = rt56rp_gr_historical_gflag }
+				# check if array is not empty
+				NOT = { check_variable = { ROOT.si_states_marked^num = 0 } }
+			}
+
+
+
+### Move Capital
+			si_move_capital_button_click = {
+				ROOT = {
+					add_political_power = -100
+					set_capital = { state = PREV }
+				}
+			}
+
+
+### Request / Remove Resource Rights
+			si_request_resource_rights_button_click = {
+				random_country = {
+					limit = { owns_state = FROM   NOT = { tag = ROOT } }
+					give_resource_rights = { receiver = ROOT   state = FROM }
+					ROOT = { remove_relation_modifier = { target = PREV   modifier = si_resource_rights_given_opmod } }
+				}
+				set_state_flag = si_resource_rights_sflag
+			}
+			si_remove_resource_rights_button_click = {
+				every_country = { remove_resource_rights = PREV }
+				ROOT = { add_political_power = -5 }
+				clr_state_flag = si_resource_rights_sflag
+			}
+
+
+
+### Border War (Custom)
+			si_border_war_button_click = {
+				ROOT = { # attacker
+					add_timed_idea = { idea = si_border_war_attacker_idea   days = var:global.si_border_war_duration_var }
+				}
+				OWNER = { # defender
+					set_variable = { si_border_war_attacked_state_var = PREV }
+					set_variable = { si_border_war_attacker_tag_var = ROOT }
+					add_timed_idea = { idea = si_border_war_defender_idea   days = var:global.si_border_war_duration_var }
+					country_event = si.4
+				}
+				add_dynamic_modifier = { modifier = si_border_war_state_modifier }
+				#set_border_war = yes
+			}
+
+
+### Spend Money
+			si_spend_money_re_button_click = {
+				subtract_from_variable = { ROOT.si_money_var = ROOT.si_spend_money_re_var }
+				add_to_variable = { ROOT.si_spend_money_re_var = 1 }
+				random_list = {
+					5 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 25   integer = yes }
+						add_resource = { type = steel   amount = ROOT.si_re_amount_var }
+					}
+					5 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 20   integer = yes }
+						add_resource = { type = aluminium   amount = ROOT.si_re_amount_var }
+					}
+					5 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 15   integer = yes }
+						add_resource = { type = tungsten   amount = ROOT.si_re_amount_var }
+					}
+					5 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 15   integer = yes }
+						add_resource = { type = chromium   amount = ROOT.si_re_amount_var }
+					}
+					1 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 10   integer = yes }
+						add_resource = { type = oil   amount = ROOT.si_re_amount_var }
+					}
+					1 = {
+						set_variable_to_random = { var = ROOT.si_re_amount_var   min = 5   max = 8   integer = yes }
+						add_resource = { type = rubber   amount = ROOT.si_re_amount_var }
+					}
+				}
+			}
+			si_spend_money_ie_button_click = {
+				add_to_variable = { ROOT.si_money_var = -1 }
+				random_list = {
+					1 = {
+						add_extra_state_shared_building_slots = 2
+						si_increase_state_category = yes
+					}
+					1 = {
+						add_extra_state_shared_building_slots = 2
+					}
+				}
+				subtract_from_variable = { THIS.si_ie_free_slots_var = 1 }
+			}
+			si_spend_money_civ_button_click = {
+				add_to_variable = { ROOT.si_money_var = -1 }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			si_spend_money_mil_button_click = {
+				add_to_variable = { ROOT.si_money_var = -1 }
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}				
+			}
+			si_spend_money_dy_button_click = {
+				add_to_variable = { ROOT.si_money_var = -1 }
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}				
+			}
+
+
+### Mark / Unmark
+			si_mark_state_button_click = {
+				# if this is the first marked state, lock the target then add this owned state to the array
+				if = {
+					limit = { check_variable = { ROOT.si_states_marked^num = 0 } }
+					
+					OWNER = { ROOT = { set_variable = { ROOT.si_target_var = PREV } } }
+				}
+				add_to_array = { array = ROOT.si_states_marked   value = THIS }
+
+				# calculate cost to claim
+				clear_array = ROOT.si_unclaimed_states_marked
+				for_each_loop = {
+					array = ROOT.si_states_marked
+					value = v
+					if = {
+						limit = { var:v = { NOT = { is_claimed_by = ROOT } } }
+						add_to_array = { array = ROOT.si_unclaimed_states_marked   value = v }
+					}
+				}
+				ROOT = {
+					set_variable = { ROOT.si_claim_cost_var = ROOT.si_unclaimed_states_marked^num }
+					multiply_variable = { ROOT.si_claim_cost_var = global.si_claim_cost_base_var }
+					multiply_variable = { ROOT.si_claim_cost_var = ROOT.si_claim_cost_multiplier_var }
+				}
+			}
+			si_mark_all_states_button_click = {
+				# if this is the first marked state, lock the target then add all states the target owns to the array
+				if = {
+					limit = { check_variable = { ROOT.si_states_marked^num = 0 } }
+					
+					OWNER = { ROOT = { set_variable = { ROOT.si_target_var = PREV } } }
+				}
+				every_state = {
+					limit = {
+						var:ROOT.si_target_var = { owns_state = PREV }
+						NOT = { is_in_array = { array = ROOT.si_states_marked   value = THIS } }
+					}
+					add_to_array = { array = ROOT.si_states_marked   value = THIS }
+				}
+
+				# calculate cost to claim
+				clear_array = ROOT.si_unclaimed_states_marked
+				for_each_loop = {
+					array = ROOT.si_states_marked
+					value = v
+					if = {
+						limit = { var:v = { NOT = { is_claimed_by = ROOT } } }
+						add_to_array = { array = ROOT.si_unclaimed_states_marked   value = v }
+					}
+				}
+				ROOT = {
+					set_variable = { ROOT.si_claim_cost_var = ROOT.si_unclaimed_states_marked^num }
+					multiply_variable = { ROOT.si_claim_cost_var = global.si_claim_cost_base_var }
+					multiply_variable = { ROOT.si_claim_cost_var = ROOT.si_claim_cost_multiplier_var }
+				}
+			}
+			si_unmark_state_button_click = {
+				# remove this owned state from the array, and if this is the last state unlock the target
+				remove_from_array = { array = ROOT.si_states_marked   value = THIS }
+				if = {
+					limit = { check_variable = { ROOT.si_states_marked^num = 0 } }
+					
+					set_variable = { ROOT.si_target_var = 0 }
+				}
+
+				# calculate cost to claim
+				clear_array = ROOT.si_unclaimed_states_marked
+				for_each_loop = {
+					array = ROOT.si_states_marked
+					value = v
+					if = {
+						limit = { var:v = { NOT = { is_claimed_by = ROOT } } }
+						add_to_array = { array = ROOT.si_unclaimed_states_marked   value = v }
+					}
+				}
+				ROOT = {
+					set_variable = { ROOT.si_claim_cost_var = ROOT.si_unclaimed_states_marked^num }
+					multiply_variable = { ROOT.si_claim_cost_var = global.si_claim_cost_base_var }
+					multiply_variable = { ROOT.si_claim_cost_var = ROOT.si_claim_cost_multiplier_var }
+				}
+			}
+			si_unmark_all_states_button_click = {
+				# remove all marked states from the array, unlock the target, and clear claim cost
+				clear_array = ROOT.si_states_marked
+				clear_array = ROOT.si_unclaimed_states_marked
+				ROOT = {
+					set_variable = { ROOT.si_target_var = 0 }
+					set_variable = { ROOT.si_claim_cost_var = 0 }
+				}
+			}
+
+
+### Transfer / Claim
+			si_transfer_button_click = {
+				OWNER = { ROOT = { set_variable = { ROOT.si_receiver_var = PREV } } }
+
+				for_each_loop = {
+					array = ROOT.si_states_marked
+					value = v
+					OWNER = { transfer_state = v }
+				}
+				
+					ROOT = { news_event = si.1 }
+			
+
+				clear_array = ROOT.si_states_marked
+				clear_array = ROOT.si_unclaimed_states_marked
+				ROOT = {
+					set_variable = { ROOT.si_target_var = 0 }
+					set_variable = { ROOT.si_claim_cost_var = 0 }
+				}
+			}
+
+			si_claim_button_click = {
+				# check which of the marked states are not claimed by ROOT
+				for_each_loop = {
+					array = ROOT.si_states_marked
+					value = v
+					if = {
+						limit = { var:v = { NOT = { is_claimed_by = ROOT } } }
+						ROOT = { add_state_claim = v }
+					}
+				}
+
+				if = {
+					limit = { has_global_flag = rt56rp_gr_state_interactions_events_gflag }
+					ROOT = { news_event = si.2 }
+				}
+
+				ROOT = {
+					multiply_variable = { ROOT.si_claim_cost_var = -1 }
+					add_political_power = ROOT.si_claim_cost_var
+				}
+
+				clear_array = ROOT.si_states_marked
+				clear_array = ROOT.si_unclaimed_states_marked
+				ROOT = {
+					set_variable = { ROOT.si_target_var = 0 }
+					set_variable = { ROOT.si_claim_cost_var = 0 }
+				}
+				
+			}
+		}
+
+		ai_check = {
+			check_variable = { ai_random > 0.65 }
+			check_variable = { political_power > 100 }
+		}
+
+		ai_weights = {
+			si_core_button_click = {
+				ai_will_do = {
+					factor = 100
+				}
+			}
+			si_border_war_button_click = {
+				ai_will_do = {
+					factor = 0.1
+				}
+			}
+		}
+	}
+
+}

@@ -10,6 +10,7 @@ ideas = {
 				ai_get_ally_desire_factor = -200
                 ai_join_ally_desire_factor = -200
                 join_faction_tension = 0.5
+				
 			}
 		}
 		sooo_player_was_here = {
@@ -18,6 +19,7 @@ ideas = {
 			removal_cost = -1
 			rule = {
 				can_create_factions = yes
+				can_join_factions = yes
 			}	
 			modifier = {
             join_faction_tension = -1.0
